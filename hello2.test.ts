@@ -1,18 +1,15 @@
-import asMock from "./asMock";
-import hello from "./hello";
-import decorate from './decorate';
-
-// If this is importing is not load first, the test may fail
-import './mockDecorate';
+import shared from "./shared";
 
 describe('hello2', () => {
-  const mockDecorate = asMock(decorate);
 
-  beforeEach(() => mockDecorate.mockClear());
+  it('hello2-1', () => {
+    shared.push('hello2-1')
+    console.log('### shared in hello2:', shared)
+  })
 
-  it('tests', () => {
-    mockDecorate.mockImplementation((s) => `[${s}]`)
-    expect(hello('aaa')).toEqual('Hello, [aaa]!')
+  it('hello2-2', () => {
+    shared.push('hello2-2')
+    console.log('### shared in hello2:', shared)
   })
 
 })
